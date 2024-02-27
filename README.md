@@ -1,7 +1,7 @@
 # Laravel-Namespaces
 Laravel basics namespaces
 
-## Routes, Controllers, Middleware, Requests, Eloquent ORM, and Query Builders
+## Routes, Controllers, Middleware, Requests, Models & Eloquent ORM, Migrations and Query Builders
 
 Routes in Laravel are defined using the `Illuminate\Routing\Router` class. This class provides methods like `get()`, `post()`, `put()`, `delete()`, etc., for defining HTTP verbs. These methods return instances of `Illuminate\Routing\Route` class.
 
@@ -56,6 +56,32 @@ class User extends Model
     //
 }
 ```
+
+### Migrations
+```php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateExampleTable extends Migration
+{
+
+    public function up()
+    {
+        Schema::create('example', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('example');
+    }
+}
+```
+
 ### Query Builder:
 ```php
 use Illuminate\Support\Facades\DB;
